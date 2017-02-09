@@ -17,26 +17,25 @@ nav a {
   display: block;
   float: left;
 }
-img {
-  height: 200px;
-  width: 150px;
-}
+
 footer {
   background-color: #808080;
 }
 .board {
   height: 50%;
-  width: 50%;
+  width: 680px;
+  margin: 0 auto;
   display: inline-block;
 }
 .card {
-  height: 200px;
+  height: 225px;
   width: 150px;
-  background-color: yellow;
-  border: 1px solid;
-  border-radius: 10px;
+  background-image: url("../img/card-back.jpg");
+  background-size: cover;
+  /*border: 1px solid;
+  border-radius: 5px;*/
   float: left;
-  margin: 8%;
+  margin: 10px;
 }
 .name {
   color: #ff0000;

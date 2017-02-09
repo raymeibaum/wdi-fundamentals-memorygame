@@ -1,4 +1,4 @@
-var cards = ['queen', 'queen', 'king', 'king'],
+var cards = ['chameleon', 'chameleon', 'eagle', 'eagle', 'flamingo', 'flamingo', 'giraffe', 'giraffe', 'penguin', 'penguin', 'snail', 'snail'];
     cardsInPlay = [];
 
 var gameBoard = document.getElementById('game-board');
@@ -6,7 +6,7 @@ var gameBoard = document.getElementById('game-board');
 function createBoard() {
   for (var i = 0; i < cards.length; i++) {
     var newCard = document.createElement('div');
-    newCard.className = 'card';
+    newCard.classList.add('card');
     newCard.setAttribute('data-card', cards[i]);
     newCard.addEventListener('click', isTwoCards);
     gameBoard.appendChild(newCard);
@@ -15,6 +15,10 @@ function createBoard() {
 
 function isMatch(arr) {
   return arr[0] === arr[1];
+}
+
+function flipCard() {
+
 }
 
 function isTwoCards() {
@@ -27,9 +31,7 @@ function isTwoCards() {
   if (cardsInPlay.length === 2) {
     isMatch(cardsInPlay);
     var cards = document.getElementsByClassName('card');
-    console.log(cards);
     cards.innerHTML = "";
-    console.log(cards);
     cardsInPlay = [];
   }
 }
