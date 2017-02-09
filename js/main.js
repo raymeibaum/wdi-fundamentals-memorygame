@@ -1,13 +1,13 @@
-var cards = ['chameleon', 'chameleon', 'eagle', 'eagle', 'flamingo', 'flamingo', 'giraffe', 'giraffe', 'penguin', 'penguin', 'snail', 'snail'];
-cardsInPlay = [];
+var cards = ['chameleon', 'chameleon', 'eagle', 'eagle', 'flamingo', 'flamingo', 'giraffe', 'giraffe', 'penguin', 'penguin', 'snail', 'snail'],
+    cardsInPlay = [];
 
-var gameBoard = document.getElementById('game-board');
+var board = document.getElementById('game-board');
 
 function createBoard() {
   shuffle(cards);
   for (var i = 0; i < cards.length; i++) {
     var newCard = document.createElement('div');
-    newCard.classList.add('card');
+    newCard.classList.add('card', 'animated', 'flipInY');
     newCard.setAttribute('data-card', cards[i]);
     newCard.id = `card-${i}`;
 
@@ -21,7 +21,7 @@ function createBoard() {
     newCard.appendChild(front);
 
     newCard.addEventListener('click', flipCard);
-    gameBoard.appendChild(newCard);
+    board.appendChild(newCard);
   }
 }
 
