@@ -30,12 +30,20 @@ footer {
 .card {
   height: 225px;
   width: 150px;
-  background-image: url("../img/card-back.jpg");
-  background-size: cover;
-  /*border: 1px solid;
-  border-radius: 5px;*/
   float: left;
   margin: 10px;
+  overflow: hidden;
+}
+.front {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+.back {
+  height: 100%;
+  width: 100%;
+  background-image: url("../img/card-back.jpg");
+  background-size: cover;
 }
 .name {
   color: #ff0000;
@@ -47,4 +55,10 @@ footer {
   clear: both;
   height: 0;
   font-size: 0;
+}
+.hidden {
+  display: none;
+}
+.removed {
+  visibility: hidden;
 }
