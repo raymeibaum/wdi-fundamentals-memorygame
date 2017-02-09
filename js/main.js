@@ -42,6 +42,11 @@ function flipCard() {
   this.firstChild.classList.add('hidden');
   cardsInPlay.push(card);
 
+
+// if (cardsInPlay.length === 2) {
+//   compareCards(document.getElementsByClassName('in-play'));
+// }
+
   if (cardsInPlay.length === 2 && isMatch(cardsInPlay)) {
     //matched! "remove" cards and increment score
     var matchedCards = document.getElementsByClassName('in-play');
@@ -62,9 +67,23 @@ function flipCard() {
   }
 }
 
-function isMatch(arr) {
-  return arr[0].animal === arr[1].animal;
+function isMatch(cards) {
+  return cards[0].animal === cards[1].animal;
 }
+
+// function compareCards(cards) {
+//   console.log(cards);
+//   for (var i = cards.length - 1; i >= 0; i--) {
+//     cards[i].classList.remove('in-play');
+//     if (isMatch(cardsInPlay)) {
+//       cards[i].classList.add('animated', 'flipOutY');
+//     } else {
+//       console.log(cards[i]);
+//       // cards[i].firstChild.classList.remove('hidden');
+//     }
+//   }
+//   cardsInPlay = [];
+// }
 
 function shuffle(array) {
   var currentIndex = array.length,
