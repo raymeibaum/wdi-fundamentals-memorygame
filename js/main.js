@@ -1,9 +1,11 @@
 var cards = ['chameleon', 'chameleon', 'eagle', 'eagle', 'flamingo', 'flamingo', 'giraffe', 'giraffe', 'penguin', 'penguin', 'snail', 'snail'],
-    cardsInPlay = [];
+    cardsInPlay = [],
+    cardsRemaining = 12;
 
 var board = document.getElementById('game-board');
 
 function createBoard() {
+
   shuffle(cards);
   for (var i = 0; i < cards.length; i++) {
     var newCard = document.createElement('div');
@@ -34,7 +36,7 @@ function flipCard() {
     this.firstChild.classList.add('animated', 'fadeOut');
     cardsInPlay.push(card);
   }
-  window.setTimeout(evaluateCards, 1500);
+  window.setTimeout(evaluateCards, 1800);
 }
 
 function evaluateCards() {
@@ -44,10 +46,16 @@ function evaluateCards() {
     cardsInPlay.forEach(function(card) {
       if (isMatch(cardsInPlay) && !isSameCard(cardsInPlay)) {
         document.getElementById(card.id).classList = 'card animated flipOutY';
+        cardsRemaining--;
       } else {
         document.getElementById(card.id).firstChild.classList = 'back animated fadeIn';
       }
     });
+    if (winner()) {
+      if (window.confirm("Congratulations! You won! Would you like to play again?")) {
+        resetGame();
+      }
+    }
     cardsInPlay = [];
   }
 }
@@ -58,10 +66,18 @@ function isMatch(cards) {
 function isSameCard(cards) {
   return cards[0].id === cards[1].id;
 }
+function winner() {
+  return cardsRemaining === 0;
+}
 
-function resetBoard() {
-  board.innerHTML = "";
+function resetGame() {
+  clearBoard();
   createBoard();
+  cardsRemaining = 12;
+  cardsInPlay = [];
+}
+function clearBoard() {
+  board.innerHTML = "";
 }
 
 function shuffle(array) {
