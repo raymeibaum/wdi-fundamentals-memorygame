@@ -28,7 +28,8 @@ function createBoard() {
 function flipCard() {
   for (var j = 0; j < cardsInPlay.length; j++) {
     if (cardsInPlay[j].id === this.id) {
-      this.firstChild.classList.remove('hidden');
+      this.firstChild.classList.remove('fadeOut');
+      this.firstChild.classList.add('fadeIn');
       cardsInPlay.splice(j, 1);
       return;
     }
@@ -39,7 +40,7 @@ function flipCard() {
   }
 
   this.classList.add('in-play');
-  this.firstChild.classList.add('hidden');
+  this.firstChild.classList.add('animated', 'fadeOut');
   cardsInPlay.push(card);
 
 
@@ -60,7 +61,8 @@ function flipCard() {
     //not a match, reset cards
     var unmatchedCards = document.getElementsByClassName('in-play');
     for (var i = unmatchedCards.length - 1; i >= 0; i--) {
-      unmatchedCards[i].firstChild.classList.remove('hidden');
+      unmatchedCards[i].firstChild.classList.remove('fadeOut');
+      unmatchedCards[i].firstChild.classList.add('fadeIn');
       unmatchedCards[i].classList.remove('in-play');
     }
     cardsInPlay = [];

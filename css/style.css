@@ -2,6 +2,8 @@ body {
   text-align: center;
 }
 h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 50px;
   color: teal;
 }
 h2 {
@@ -19,7 +21,8 @@ nav a {
 }
 
 footer {
-  background-color: #808080;
+  margin-top: 20px;
+  color: #808080;
 }
 .board {
   height: 50%;
@@ -32,18 +35,22 @@ footer {
   width: 150px;
   float: left;
   margin: 10px;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 .front {
   height: 100%;
   width: 100%;
+  position: absolute;
   background-size: cover;
+  z-index: 1;
 }
 .back {
   height: 100%;
   width: 100%;
+  position: absolute;
   background-image: url("../img/card-back.jpg");
   background-size: cover;
+  z-index: 2;
 }
 .name {
   color: #ff0000;
