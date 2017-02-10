@@ -5,6 +5,7 @@ h1 {
   font-family: 'Pacifico', cursive;
   font-size: 50px;
   color: teal;
+  text-align: center;
 }
 h2 {
   color: gold;
@@ -21,6 +22,7 @@ nav a {
 }
 
 footer {
+  text-align: center;
   margin-top: 20px;
   color: #808080;
 }
@@ -67,4 +69,7 @@ footer {
 }
 .removed {
   visibility: hidden;
+}
+.modal {
+  text-align: left;
 }
