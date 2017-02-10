@@ -26,66 +26,62 @@ function createBoard() {
 }
 
 function flipCard() {
-  for (var j = 0; j < cardsInPlay.length; j++) {
-    if (cardsInPlay[j].id === this.id) {
-      this.firstChild.classList.remove('fadeOut');
-      this.firstChild.classList.add('fadeIn');
-      cardsInPlay.splice(j, 1);
-      return;
-    }
-  }
   var card = {
     animal: this.getAttribute('data-card'),
     id: this.id
   }
 
-  this.classList.add('in-play');
   this.firstChild.classList.add('animated', 'fadeOut');
-  cardsInPlay.push(card);
 
 
-// if (cardsInPlay.length === 2) {
-//   compareCards(document.getElementsByClassName('in-play'));
-// }
-
-  if (cardsInPlay.length === 2 && isMatch(cardsInPlay)) {
-    //matched! "remove" cards and increment score
-    var matchedCards = document.getElementsByClassName('in-play');
-    for (var i = matchedCards.length - 1; i >= 0; i--) {
-      matchedCards[i].classList.add('animated', 'flipOutY');
-      matchedCards[i].classList.remove('in-play');
+  window.setTimeout(function(){
+    cardsInPlay.push(card);
+    if (cardsInPlay.length === 2 && isSameCard(cardsInPlay)) {
+      this.firstChild.classList.remove('fadeOut');
+      this.firstChild.classList.add('fadeIn');
+      cardsInPlay = [];
+    } else if (cardsInPlay.length === 2 && isMatch(cardsInPlay)) {
+      for (var i = cardsInPlay.length - 1; i >= 0; i--) {
+        document.getElementById(cardsInPlay[i].id).classList.remove('flipInY');
+        document.getElementById(cardsInPlay[i].id).classList.add('flipOutY');
+      }
+      cardsInPlay = [];
+    } else if (cardsInPlay.length === 2) {
+      for (var j = cardsInPlay.length - 1; j >= 0; j--) {
+        console.log(cardsInPlay[j].id);
+        document.getElementById(cardsInPlay[j].id).firstChild.classList.remove('fadeOut');
+        document.getElementById(cardsInPlay[j].id).firstChild.classList.add('fadeIn');
+      }
+      cardsInPlay = [];
     }
-    cardsInPlay = [];
+  }, 1500);
 
-  } else if (cardsInPlay.length === 2) {
-    //not a match, reset cards
-    var unmatchedCards = document.getElementsByClassName('in-play');
-    for (var i = unmatchedCards.length - 1; i >= 0; i--) {
-      unmatchedCards[i].firstChild.classList.remove('fadeOut');
-      unmatchedCards[i].firstChild.classList.add('fadeIn');
-      unmatchedCards[i].classList.remove('in-play');
-    }
-    cardsInPlay = [];
-  }
+  // if (cardsInPlay.length === 2 && isSameCard(cardsInPlay)) {
+  //   this.firstChild.classList.remove('fadeOut');
+  //   this.firstChild.classList.add('fadeIn');
+  //   cardsInPlay = [];
+  // } else if (cardsInPlay.length === 2 && isMatch(cardsInPlay)) {
+  //   for (var i = cardsInPlay.length - 1; i >= 0; i--) {
+  //     document.getElementById(cardsInPlay[i].id).classList.remove('flipInY');
+  //     document.getElementById(cardsInPlay[i].id).classList.add('flipOutY');
+  //   }
+  //   cardsInPlay = [];
+  // } else if (cardsInPlay.length === 2) {
+  //   for (var j = cardsInPlay.length - 1; j >= 0; j--) {
+  //     console.log(cardsInPlay[j].id);
+  //     document.getElementById(cardsInPlay[j].id).firstChild.classList.remove('fadeOut');
+  //     document.getElementById(cardsInPlay[j].id).firstChild.classList.add('fadeIn');
+  //   }
+  //   cardsInPlay = [];
+  // }
 }
 
 function isMatch(cards) {
   return cards[0].animal === cards[1].animal;
 }
-
-// function compareCards(cards) {
-//   console.log(cards);
-//   for (var i = cards.length - 1; i >= 0; i--) {
-//     cards[i].classList.remove('in-play');
-//     if (isMatch(cardsInPlay)) {
-//       cards[i].classList.add('animated', 'flipOutY');
-//     } else {
-//       console.log(cards[i]);
-//       // cards[i].firstChild.classList.remove('hidden');
-//     }
-//   }
-//   cardsInPlay = [];
-// }
+function isSameCard(cards) {
+  return cards[0].id === cards[1].id;
+}
 
 function shuffle(array) {
   var currentIndex = array.length,
