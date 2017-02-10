@@ -30,50 +30,26 @@ function flipCard() {
     animal: this.getAttribute('data-card'),
     id: this.id
   }
-
-  this.firstChild.classList.add('animated', 'fadeOut');
-
-
-  window.setTimeout(function(){
+  if (cardsInPlay.length < 2) {
+    this.firstChild.classList.add('animated', 'fadeOut');
     cardsInPlay.push(card);
-    if (cardsInPlay.length === 2 && isSameCard(cardsInPlay)) {
-      this.firstChild.classList.remove('fadeOut');
-      this.firstChild.classList.add('fadeIn');
-      cardsInPlay = [];
-    } else if (cardsInPlay.length === 2 && isMatch(cardsInPlay)) {
-      for (var i = cardsInPlay.length - 1; i >= 0; i--) {
-        document.getElementById(cardsInPlay[i].id).classList.remove('flipInY');
-        document.getElementById(cardsInPlay[i].id).classList.add('flipOutY');
-      }
-      cardsInPlay = [];
-    } else if (cardsInPlay.length === 2) {
-      for (var j = cardsInPlay.length - 1; j >= 0; j--) {
-        console.log(cardsInPlay[j].id);
-        document.getElementById(cardsInPlay[j].id).firstChild.classList.remove('fadeOut');
-        document.getElementById(cardsInPlay[j].id).firstChild.classList.add('fadeIn');
-      }
-      cardsInPlay = [];
-    }
-  }, 1500);
+  }
+  window.setTimeout(evaluateCards, 1500);
+}
 
-  // if (cardsInPlay.length === 2 && isSameCard(cardsInPlay)) {
-  //   this.firstChild.classList.remove('fadeOut');
-  //   this.firstChild.classList.add('fadeIn');
-  //   cardsInPlay = [];
-  // } else if (cardsInPlay.length === 2 && isMatch(cardsInPlay)) {
-  //   for (var i = cardsInPlay.length - 1; i >= 0; i--) {
-  //     document.getElementById(cardsInPlay[i].id).classList.remove('flipInY');
-  //     document.getElementById(cardsInPlay[i].id).classList.add('flipOutY');
-  //   }
-  //   cardsInPlay = [];
-  // } else if (cardsInPlay.length === 2) {
-  //   for (var j = cardsInPlay.length - 1; j >= 0; j--) {
-  //     console.log(cardsInPlay[j].id);
-  //     document.getElementById(cardsInPlay[j].id).firstChild.classList.remove('fadeOut');
-  //     document.getElementById(cardsInPlay[j].id).firstChild.classList.add('fadeIn');
-  //   }
-  //   cardsInPlay = [];
-  // }
+function evaluateCards() {
+  if (cardsInPlay.length !== 2) {
+    return;
+  } else {
+    cardsInPlay.forEach(function(card) {
+      if (isMatch(cardsInPlay) && !isSameCard(cardsInPlay)) {
+        document.getElementById(card.id).classList = 'card animated flipOutY';
+      } else {
+        document.getElementById(card.id).firstChild.classList = 'back animated fadeIn';
+      }
+    });
+    cardsInPlay = [];
+  }
 }
 
 function isMatch(cards) {
@@ -81,6 +57,11 @@ function isMatch(cards) {
 }
 function isSameCard(cards) {
   return cards[0].id === cards[1].id;
+}
+
+function resetBoard() {
+  board.innerHTML = "";
+  createBoard();
 }
 
 function shuffle(array) {
