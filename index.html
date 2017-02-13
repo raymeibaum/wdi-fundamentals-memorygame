@@ -5,7 +5,7 @@
 	<title>Animal Match</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -15,14 +15,16 @@
 <body>
 	<div class="container">
 		<h1>Animal Match</h1>
+		<!-- TODO: implement timer -->
+		<h2 id='timer'>00:00.000</h2>
 		<div class="btn-group" role="group" aria-label="...">
-			<button type="button" class="btn btn-default">New Game</button>
-			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Instructions</button>
+			<button type="button" id="reset-btn" class="btn btn-default">New Game</button>
+			<button type="button" id="instructions-btn" class="btn btn-default" data-toggle="modal" data-target="#myModal">Instructions</button>
 		</div>
 		<div class="board" id="game-board"></div>
 	</div>
 	<footer>
-		©2017 Ray Meibaum. All rights reserved.
+		©2017 <a href="http://www.raymeibaum.com">Ray Meibaum</a>. All rights reserved.
 	</footer>
 
 	<!-- Modal -->
@@ -42,18 +44,12 @@
 							to turn over pairs of matching cards.
 						</p>
 				</div>
-				<!-- <div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div> -->
 			</div>
 		</div>
 	</div>
-
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="js/main.js"></script>
 </body>
-
 </html>
