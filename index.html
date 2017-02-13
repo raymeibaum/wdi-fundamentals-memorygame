@@ -25,9 +25,9 @@
 		<h2 id='timer'>00:00.000</h2>
 		<div class="btn-group" role="group" aria-label="...">
 			<button type="button" id="reset-btn" class="btn btn-default">New Game</button>
-			<button type="button" id="instructions-btn" class="btn btn-default" data-toggle="modal" data-target="#myModal">Instructions</button>
+			<button type="button" id="instructions-btn" class="btn btn-default" data-toggle="modal" data-target="#instructions-modal">Instructions</button>
 		</div>
-		<div class="board" id="game-board"></div>
+		<div class="board clearfix" id="game-board"></div>
 		<!-- TODO: clearfix footer -->
 		<footer>
 			©2017 <a href="http://www.raymeibaum.com">Ray Meibaum</a>. All rights reserved.
@@ -35,8 +35,8 @@
 	</div>
 
 
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<!-- Instructions Modal -->
+	<div class="modal fade" id="instructions-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -44,20 +44,37 @@
 					<h4 class="modal-title" id="myModalLabel">Instructions</h4>
 				</div>
 				<div class="modal-body">
-					<p>
-							Concentration, also known as Match Match, Memory, Pelmanism,
-							Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of
-							the cards are laid face down on a surface and two cards are flipped face up
-							over each turn. The object of the game is
-							to turn over pairs of matching cards.
-						</p>
+					<p>Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is
+						to turn over pairs of matching cards.</p>
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<!-- Win Modal -->
+	<div class="modal fade" id="win-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Congratulations!</h4>
+				</div>
+				<div class="modal-body">
+					<strong>You cleared the board in:</strong>
+					<h2 id="modal-win-time">00:00.000</h2>
+				</div>
+				<div class="modal-footer">
+					<a id="modal-tweet-btn" role="button" class="btn btn-info"><i class="fa fa-twitter" aria-hidden="true"></i> Tweet Score</a>
+					<button id="modal-reset-btn" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-refresh" aria-hidden="true"></i> Try again</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://use.fontawesome.com/35a9f58998.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="js/main.js"></script>
 </body>
+
 </html>

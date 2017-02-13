@@ -2,17 +2,17 @@ var cards = ['chameleon', 'chameleon', 'eagle', 'eagle', 'flamingo', 'flamingo',
     cardsInPlay = [],
     cardsRemaining = 12,
     startTime,
-    timerRequest;
+    timerRequest,
+    formattedElapsedTime;
 
 var board = document.getElementById('game-board'),
     timer = document.getElementById('timer');
 
 
 document.getElementById('reset-btn').addEventListener('click', resetGame);
-document.getElementById('instructions-btn').addEventListener('click', displayModal);
+document.getElementById('modal-reset-btn').addEventListener('click', resetGame);
 
 function createBoard() {
-
   shuffle(cards);
   cards.forEach(function(card, index) {
     var newCard = document.createElement('div');
@@ -64,9 +64,8 @@ function evaluateCards() {
       }
     });
     if (isWinner()) {
-      if (window.confirm("Congratulations! You won! Would you like to play again?")) {
-        resetGame();
-      }
+      stopTimer();
+      displayModal();
     }
     cardsInPlay = [];
   }
@@ -81,6 +80,7 @@ function isSameCard(cards) {
 function isWinner() {
   return cardsRemaining === 0;
 }
+
 function computeTimeElapsed() {
   var currentTime = Date.now(),
       elapsedTime = new Date(currentTime - startTime);
@@ -104,8 +104,8 @@ function computeTimeElapsed() {
   if (minutes < 10) {
     minutes = '0' + minutes;
   }
-
-  timer.textContent = `${minutes}:${seconds}.${milliseconds}`;
+  formattedElapsedTime = `${minutes}:${seconds}.${milliseconds}`
+  timer.textContent = formattedElapsedTime;
   timerRequest = window.requestAnimationFrame(computeTimeElapsed);
 }
 
@@ -121,11 +121,21 @@ function clearBoard() {
   board.innerHTML = "";
 }
 function displayModal() {
+  document.getElementById('modal-win-time').textContent = formattedElapsedTime;
+  var winMessage = `I just cleared Animal Match in ${formattedElapsedTime}! #AnimalMatch`;
+  document.getElementById('modal-tweet-btn').setAttribute('href', `https://twitter.com/intent/tweet?text=${encodeURIComponent(winMessage)}`);
 
+  //actually display modal
+  $('#win-modal').modal();
 }
-function resetTimer() {
-  startTime = null;
+
+function stopTimer() {
   window.cancelAnimationFrame(timerRequest);
+}
+
+function resetTimer() {
+  stopTimer()
+  startTime = null;
   timer.textContent = "00:00.000";
 }
 
