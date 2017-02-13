@@ -6,6 +6,13 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="manifest.json">
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="theme-color" content="#ffffff">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -15,17 +22,18 @@
 <body>
 	<div class="container">
 		<h1>Animal Match</h1>
-		<!-- TODO: implement timer -->
 		<h2 id='timer'>00:00.000</h2>
 		<div class="btn-group" role="group" aria-label="...">
 			<button type="button" id="reset-btn" class="btn btn-default">New Game</button>
 			<button type="button" id="instructions-btn" class="btn btn-default" data-toggle="modal" data-target="#myModal">Instructions</button>
 		</div>
 		<div class="board" id="game-board"></div>
+		<!-- TODO: clearfix footer -->
+		<footer>
+			©2017 <a href="http://www.raymeibaum.com">Ray Meibaum</a>. All rights reserved.
+		</footer>
 	</div>
-	<footer>
-		©2017 <a href="http://www.raymeibaum.com">Ray Meibaum</a>. All rights reserved.
-	</footer>
+
 
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
