@@ -26,7 +26,7 @@ function createBoard() {
 
     var front = document.createElement('div');
     front.classList.add('front');
-    front.setAttribute('style', `background-image: url(img/${card}.jpg`);
+    front.setAttribute('style', `background-image: url(img/${card}.png)`);
     newCard.appendChild(front);
 
     newCard.addEventListener('click', flipCard);
