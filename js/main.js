@@ -139,6 +139,7 @@ function resetTimer() {
   timer.textContent = "00:00.000";
 }
 
+//from Stack Overflow
 function shuffle(array) {
   var currentIndex = array.length,
     temporaryValue, randomIndex;
