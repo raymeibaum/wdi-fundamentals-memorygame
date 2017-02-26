@@ -1,3 +1,90 @@
+// Model
+var game = {
+  deck: {
+    fronts: [
+      'chameleon',
+      'eagle',
+      'flamingo',
+      'giraffe',
+      'penguin',
+      'snail'
+    ],
+    back: 'img/card-back.png',
+    create: function() {
+      var cards = [];
+      this.front.forEach(function(front, index) {
+        console.log(this);
+      })
+      return shuffle(cards);
+    },
+    shuffle: function(array) {
+      var currentIndex = array.length,
+        temporaryValue, randomIndex;
+
+      while (0 !== currentIndex) {
+
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
+    }
+  },
+  duration: null
+};
+
+// Controller
+var controller = {
+  init: function() {
+    board.init();
+    timer.init();
+
+    this.newGame();
+  },
+  createDeck: function() {
+    var deck = []
+  },
+  shuffleDeck: function(array) { // Shuffle function courtesy of Stack Overflow
+    var currentIndex = array.length,
+      temporaryValue, randomIndex;
+
+    while (0 !== currentIndex) {
+
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+};
+// Views
+var board = {
+  init: function() {
+
+  }
+};
+
+var timer = {
+  init: function() {
+
+  }
+};
+
+var modal = {
+  init: function() {
+
+  }
+}
+
+
 var cards = ['chameleon', 'chameleon', 'eagle', 'eagle', 'flamingo', 'flamingo', 'giraffe', 'giraffe', 'penguin', 'penguin', 'snail', 'snail'],
     cardsInPlay = [],
     cardsRemaining = 12,
@@ -161,3 +248,4 @@ function shuffle(array) {
 }
 
 createBoard();
+game.deck.create();
